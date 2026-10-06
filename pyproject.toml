@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fund-rag"
+version = "0.1.0"
+description = "Multilingual fund-documentation RAG assistant with fund-aware retrieval and grounded Gemini generation"
+requires-python = ">=3.11"
+dependencies = [
+    "PyMuPDF>=1.26,<2",
+    "Pillow>=10",
+    "transformers>=4.45",
+    "torch>=2.2",
+    "faiss-cpu>=1.8",
+    "sentence-transformers>=3.0",
+    "rank-bm25>=0.2.2",
+    "pydantic>=2",
+    "google-genai>=2.0",
+]
+
+[project.optional-dependencies]
+notebooks = [
+    "jupyterlab>=4,<5",
+    "ipykernel>=6,<8",
+    "ipywidgets>=8,<9",
+    "pandas>=2,<3",
+]
+test = ["pytest>=8,<10"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
